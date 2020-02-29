@@ -1,5 +1,5 @@
 :root {
-  --modal-duration: 1s;
+  --modal-duration: 2s;
   --primary-color: #30336b;
   --secondary-color: #be2edd;
 }
@@ -10,8 +10,12 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
+  transition: transform 0.5s ease;
 }
 
+body.show-nav {
+  transform: translateX(200px);
+}
 nav {
   background-color: var(--primary-color);
   border-right: 2px solid rgba(200, 200, 200, 0.1);
@@ -119,6 +123,10 @@ button:focus {
   display: none;
 }
 
+.modal-container.show-modal {
+  display: block;
+}
+
 .modal {
   background-color: #fff;
   border-radius: 5px;
@@ -130,6 +138,8 @@ button:focus {
   transform: translate(-50%, -50%);
   max-width: 100%;
   width: 400px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
 }
 
 .modal-header {
@@ -167,4 +177,13 @@ button:focus {
 .modal-form .form-input {
   padding: 8px;
   width: 100%;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
